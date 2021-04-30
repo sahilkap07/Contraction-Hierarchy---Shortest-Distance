@@ -66,7 +66,7 @@ class Graph
 
     // Priority queues for forward and backward searches
     StlHeap diqueue[2];
-    // std::vector<std::priority_queue<std::pair<long long, long long>, std::vector<std::pair<long long, long long>>, std::greater<std::pair<long long, long long>>>;
+    
 public:
     Graph() {
         read_stdin();
@@ -178,7 +178,7 @@ public:
     void preprocess() {
         std::priority_queue<std::pair<int, Vertex>, std::vector<std::pair<int, Vertex>>, std::greater<std::pair<int, Vertex>>> queue;
 
-        // Implement the rest of the algorithm yourself
+        
         for (int i = 0; i < N; i++) {
             queue.emplace(std::make_pair(compute_importance(i), i));
         }
@@ -203,7 +203,7 @@ public:
     // Returns distance from s to t in the graph
     Distance query(Vertex u, Vertex w) {
 
-        // Implement the rest of the algorithm yourself
+        
         workset_clear(true);
         if (u == w) return 0;
         diqueue[0].update(u, 0);
@@ -248,7 +248,7 @@ public:
 private:
     // Try to relax the node v using distance d either in the forward or in the backward search
     void update(Vertex v, bool forward) {
-        // Implement this method yourself
+        
         if (forward){
             for (std::pair<Vertex, Distance> node : outgoing_edges[v]){
                 if (bidistance[0][node.first] > bidistance[0][v] + node.second && rank[node.first] > rank[v]) {
